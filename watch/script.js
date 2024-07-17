@@ -38,8 +38,9 @@ let shouldSpeedUp = false
 
 function startMouseDownTimer() {
   mousedowntimer = setTimeout(function(){
-    
-  },1000)
+    shouldSpeedUp=true
+    document.querySelector("video").playbackRate=2
+  },500)
 }
 
 document.querySelector("video").addEventListener("mousedown", (e) => {
@@ -50,10 +51,12 @@ document.querySelector("video").addEventListener("mousedown", (e) => {
 document.querySelector("video").addEventListener("mouseup", (e) => {
   if (shouldSpeedUp == true) {
     document.querySelector("video").playbackRate=1
+    mousedowntimer=null
+    document.querySelector("video").play()
   } else {
     // timer hasn't gone off yet
-    document.querySelector("video").play()
+    clearTimeout(mousedowntimer)
   }
   mousedownonvideo = false
-  clearTimeout(mousedowntimer)
+  shouldSpeedUp=false
 })
