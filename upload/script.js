@@ -15,11 +15,11 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const storage = getStorage();
 
-// onAuthStateChanged(auth, (user) => {
-//   if (!user) {
-//     location.href='/signup'
-//   }
-// })
+onAuthStateChanged(auth, (user) => {
+  if (!user) {
+    location.href='/signup'
+  }
+})
 
 function makeid(length) {
   let result = [];

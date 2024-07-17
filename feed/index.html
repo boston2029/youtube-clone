@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>Upload - OurTube</title>
+  <title>Feed - OurTube</title>
   <link href="/navbar.css" rel="stylesheet" type="text/css" />
   <link href="style.css" rel="stylesheet" type="text/css" />
 </head>
-
 <body>
   <div class="navbar">
     <a href="/" class="item">
@@ -27,11 +25,9 @@
       Sign up
     </a>
   </div>
-  <h1>Upload</h1>
-  <input style="display:none;" type="file" accept="video/mp4,video/x-m4v,video/*">
-  <button onclick="document.querySelector('input[type=file]').click()">Click here to upload video</button><br>
-  <progress style="display:none;" value="0" max="100" id="uploader"></progress>
+  <h1>Latest Videos</h1>
+  <h2>Click to preview, double click to watch</h2>
+  <div id="videos"></div>
   <script type="module" src="script.js"></script>
 </body>
-
 </html>

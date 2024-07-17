@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>Upload - OurTube</title>
+  <title>Login - OurTube</title>
   <link href="/navbar.css" rel="stylesheet" type="text/css" />
   <link href="style.css" rel="stylesheet" type="text/css" />
 </head>
@@ -27,10 +27,14 @@
       Sign up
     </a>
   </div>
-  <h1>Upload</h1>
-  <input style="display:none;" type="file" accept="video/mp4,video/x-m4v,video/*">
-  <button onclick="document.querySelector('input[type=file]').click()">Click here to upload video</button><br>
-  <progress style="display:none;" value="0" max="100" id="uploader"></progress>
+  <center>
+    <div style="font-weight:900;font-size:50pt;">Login to OurTube</div>
+    <form>
+      <input class="fs25" type="email" placeholder="Email" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"><br>
+      <input class="fs25" type="password" placeholder="Password"><br>
+      <input class="fs25" type="submit" value="Login">
+    </form>
+  </center>
   <script type="module" src="script.js"></script>
 </body>
 
