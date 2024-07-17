@@ -18,13 +18,23 @@ const storage = getStorage();
 listAll(ref(storage, "videos")).then(response => {
   response.items.forEach(item => {
     getDownloadURL(ref(storage, "videos/"+item.name)).then(url => {
-      document.querySelector("#videos").innerHTML=`<video width="100" src="${url}" ondblclick="location.href='/watch/?v=${item.name}'"></video>`
+      document.querySelector("#videos").innerHTML+=`<video width="100" src="${url}" ondblclick="location.href='/watch/?v=${item.name}'"></video><br>`
     })
   })
 })
 
-document.querySelector("#videos").addEventListener("click", (e) => {
+let currentPreview
+
+document.querySelector("#videos").addEventListener("mousedown", (e) => {
   if (e.target.nodeName!="VIDEO") return
+  currentPreview=e.target
   e.target.playbackRate=3
   e.target.play()
+})
+
+document.querySelector("#videos").addEventListener("mouseup", (e) => {
+  if (currentPreview==null) return
+  currentPreview.pause()
+  currentPreview.currentTime=0
+  currentPreview=null
 })

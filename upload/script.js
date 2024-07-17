@@ -1,5 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js";
 import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-auth.js";
+import { getDatabase, ref as dbRef, set } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-database.js";
 import { getStorage, ref, uploadBytesResumable } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-storage.js";
 
 const firebaseConfig = {
@@ -13,6 +14,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
+const db = getDatabase();
 const storage = getStorage();
 
 onAuthStateChanged(auth, (user) => {
@@ -43,7 +45,13 @@ document.querySelector('input[type=file]').addEventListener('change', (e) => {
     const progress = (snapper.bytesTransferred / snapper.totalBytes) * 100
     document.querySelector('progress').value=progress
   }, (e)=>{alert("Error: "+e)}, () => {
-    alert("Your video has been uploaded!")
-    location.href="/watch/?v="+videoID
+    set(dbRef(db, "videos/"+videoID), {
+      name: prompt("Name your video"),
+      likes: 0,
+      dislikes: 0
+    }).then(() => {
+      alert("Your video has been uploaded!")
+      location.href="/watch/?v="+videoID
+    })
   })
 })
