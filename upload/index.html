@@ -27,15 +27,11 @@
       Sign up
     </a>
   </div>
-  <center>
-    <div style="font-weight:900;font-size:50pt;font-stretch:expanded;">We believe in free speech.</div>
-    <div style="font-size:30pt;">No ads. No drastic changes. Free.</div>
-    <br>
-    <br>
-    <a href="/signup" class="ctamain">Join Now</a>
-    <a href="/feed" class="ctasecond">Watch Videos</a>
-  </center>
-  <script src="script.js"></script>
+  <h1>Upload</h1>
+  <input style="display:none;" type="file" accept="video/mp4,video/x-m4v,video/*">
+  <button onclick="document.querySelector('input[type=file]').click()">Click here to upload video</button><br>
+  <progress style="display:none;" value="0" max="100" id="uploader"></progress>
+  <script type="module" src="script.js"></script>
 </body>
 
 </html>
